@@ -2,13 +2,16 @@ const express = require("express")
 const app = express()
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-const port = 3000
+const port = 3500
 
 // Import routes
 const IndexRouter = require("../src/routes/index.routes")
 const FoodRouter = require("../src/routes/food.routes")
-    // const HallRouter = require("../src/routes/hall.routes")
-    // const BookingRouter = require("../src/routes/booking.routes")
+const HallRouter = require("../src/routes/hall.routes")
+const BookingRouter = require("./routes/userbookings.routes")
+const ManagerBookingRouter = require("./routes/managerbookings.routes")
+const FoodUserRouter = require("./routes/food_user.routes")
+const HallUserRouter = require("./routes/hall_user.routes")
 
 // view engine setup
 app.set('view engine', 'pug');
@@ -27,8 +30,12 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 // Enable Routes
 app.use('/', IndexRouter)
 app.use('/foods', FoodRouter)
-    // app.use('/hall', HallRouter)
-    // app.use('/booking', BookingRouter)
+app.use('/hall', HallRouter)
+app.use('/userbookings', BookingRouter)
+app.use('/bookings', ManagerBookingRouter)
+app.use('/foods_user', FoodUserRouter)
+app.use('/hall_user', HallUserRouter)
+
 
 app.listen(port, () => {
     console.log(`Server listening http://localhost:${port}`)

@@ -2,25 +2,22 @@ header
   .header-wrapper
     .header-right
       .logo
-        a.logo-link(href='/')
+        a.logo-link(href='/index')
           img.logo-link_img(src='https://res.cloudinary.com/dzgdczkjk/image/upload/v1668884039/LogoClaris_yhuwmh.png' alt='')
     .header-left
-      .search
-        form.nav__search-form(method='get')
-          input.nav__search-input(type='search' placeholder='Tìm kiếm')
-          span.nav__search-icon
-            i.las.la-search
       .admin
         .admin-box
           p M
         .admin-name
           p M A N A G E R
-          
+      .search 
+          a(href='/')
+            i.las.la-sign-out-alt  
       .sidebar_header
         #mySidepanel.sidepanel
           a.closebtn(href='javascript:void(0)' onclick='closeNav()')
             i.las.la-times(id='')
-          a(href='/')
+          a(href='/index')
             | Home
             i.las.la-home
           button.dropdown-btn
@@ -30,19 +27,13 @@ header
             a(href='/foods') Food List
             a(href="/foods/new") Add Food
           button.dropdown-btn
-            | Service
-            i.las.la-hand-holding-heart
-          .dropdown-container
-            a(href='#') Service List
-            a(href='addservice.html') Add Service
-          button.dropdown-btn
             | Hall
             i.las.la-hotel
           .dropdown-container
-            a(href='#') Hall List
-            a(href='addservice.html') Add Hall
+            a(href='/hall') Hall List
+            a(href='/hall/new') Add Hall
 
-          a(href='index.html')
+          a(href='/bookings/managerbookings')
             | Booking
             i.lar.la-plus-square
         span.openbtn(onclick='openNav()')

@@ -33,7 +33,30 @@ router.post('/', upload.single('ImageUrl'), async (req, res) => {
         ImageUrl: result.secure_url,
         price: req.body.price
     })
+
+    const foodCheckid = await Food.findOne({
+        foodCode: req.body.foodCode
+     })
+
+    const foodCheckname = await Food.findOne({
+        title: req.body.title
+     })
     
+     
+  // Nếu tìm thấy id trùng nhau sẽ render ra mess
+  if (foodCheckid) {
+    return res.render('foods/new', {
+        food: food,
+        errorMessage: 'Food Already Exists'
+    })
+  }
+
+  else if (foodCheckname) {
+    return res.render('foods/new', {
+        food: food,
+        errorMessage: 'Food Already Exists'
+    })
+  }
         
     try {
         const newFood = await food.save()
@@ -51,17 +74,24 @@ router.post('/', upload.single('ImageUrl'), async (req, res) => {
 
 // Hiển thị trang Food List
 router.get('/', async (req, res, next) => {
-    let query = Food.find()
-
-    try {
-        const foods = await query.exec()
-        res.render('foods/index', {
-            foods: foods,
-        })
-    } catch{
-        res.redirect('/')
+    let searchOptions = {}
+    if (req.query.title != null && req.query.title !==''){
+      searchOptions.title = new RegExp(req.query.title, 'i')
+      // 'i' ở đây có nghĩa là tìm kiếm tên mà không phần biệt chữ hoa hay thường
     }
-});
+    try{
+      const foods = await Food.find(searchOptions);
+      res.render('foods/index',{
+        foods: foods,
+        searchOptions : req.query
+      })
+  
+    }
+    catch{
+      res.redirect('/')
+    }
+  
+  });
 
 // Chuyển sang trang Chi Tiết
 router.get('/:id', async (req, res, next) => {

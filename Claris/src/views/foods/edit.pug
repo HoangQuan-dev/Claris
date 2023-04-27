@@ -1,7 +1,7 @@
 extends ../layouts/layout
 block content
   .title.mg-top__90  
-      p CLARIS UPDATE FOOD
+    p CLARIS UPDATE FOOD
   div(class = "add_content")
     if locals.errorMessage
         .alert.alert-danger(style="color:red;")= errorMessage
@@ -31,6 +31,7 @@ block content
               label(for="coverImg") Upload Image
               input( type="file" name="ImageUrl" class="form-control p-0 h-30" required)
 
-        .d-flex.justify-content-end
-                a(href="/foods" class="btn btn-warning" style="background-color:#FF7F50; color:#fff") HUỶ
-                button(type="submit" class="btn btn-primary" style="margin-left: 15px;background-color:brown;border:brown") CẬP NHẬT
+        .btn-edit
+                a(href="/foods")
+                  i.las.la-window-close
+                button(type="submit" class="btn_update") UPDATE
