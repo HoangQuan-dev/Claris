@@ -1,7 +1,7 @@
 # Claris
 This website is for Wedding Management, and for the customer to book wedding services.
 
-Technology in use : **NodeJS**, **Pug templat**e for the Front-end, and using NoSQL environtment **MongoDB** to store website database.
+Technologies in use : **NodeJS**, **Pug templat**e for the Front-end, and using NoSQL environtment **MongoDB** to store website database.
 
 The website is for the manager to :
 - Manage the wedding halls : add new, update, delete halls
