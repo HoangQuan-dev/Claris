@@ -1,0 +1,76 @@
+header
+  .header-wrapper
+    .header-right
+      .logo
+        a.logo-link(href='/')
+          img.logo-link_img(src='https://res.cloudinary.com/dzgdczkjk/image/upload/v1668884039/LogoClaris_yhuwmh.png' alt='')
+    .header-left
+      .search
+        form.nav__search-form(method='get')
+          input.nav__search-input(type='search' placeholder='Tìm kiếm')
+          span.nav__search-icon
+            i.las.la-search
+      .admin
+        .admin-box
+          p M
+        .admin-name
+          p M A N A G E R
+          
+      .sidebar_header
+        #mySidepanel.sidepanel
+          a.closebtn(href='javascript:void(0)' onclick='closeNav()')
+            i.las.la-times(id='')
+          a(href='/')
+            | Home
+            i.las.la-home
+          button.dropdown-btn
+            | Food
+            i.las.la-concierge-bell
+          .dropdown-container
+            a(href='/foods') Food List
+            a(href="/foods/new") Add Food
+          button.dropdown-btn
+            | Service
+            i.las.la-hand-holding-heart
+          .dropdown-container
+            a(href='#') Service List
+            a(href='addservice.html') Add Service
+          button.dropdown-btn
+            | Hall
+            i.las.la-hotel
+          .dropdown-container
+            a(href='#') Hall List
+            a(href='addservice.html') Add Hall
+
+          a(href='index.html')
+            | Booking
+            i.lar.la-plus-square
+        span.openbtn(onclick='openNav()')
+          i.las.la-bars
+
+          // script
+          // Sidebar_Header
+          script.
+            function openNav() {
+            document.getElementById("mySidepanel").style.width = "230px";
+            }
+            function closeNav() {
+            document.getElementById("mySidepanel").style.width = "0";
+            }
+          // DropDown Sidebar_Header
+          script.
+            /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+            var dropdown = document.getElementsByClassName("dropdown-btn");
+            var i;
+            for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+            } else {
+            dropdownContent.style.display = "block";
+            }
+            });
+            }
+

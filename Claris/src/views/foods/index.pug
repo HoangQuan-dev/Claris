@@ -1,0 +1,11 @@
+extends ../layouts/layout
+
+block content
+  div(class = "container")
+    .row.mt-5  
+      each food in foods
+        .col-lg-3.col-12
+          .item-wrapper
+              a(href='/foods/'+food.id)
+                img(src=food.ImageUrl, class="img-item")
+                h3.item-text= food.title
